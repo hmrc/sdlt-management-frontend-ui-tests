@@ -22,5 +22,4 @@ object Urls extends Enumeration {
   val QA      = "https://www.qa.tax.service.gov.uk"
   val DEV     = "https://www.development.tax.service.gov.uk"
   val STAGING = "https://www.staging.tax.service.gov.uk"
-
 }

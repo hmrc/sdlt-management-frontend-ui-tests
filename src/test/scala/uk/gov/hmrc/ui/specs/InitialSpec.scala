@@ -37,7 +37,7 @@ class InitialSpec
   Feature("SDLT Management frontend Initial Test") {
     Scenario("Hit the initial start page") {
       Given("I enter login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
+      AuthWizard.login(HASDIRECT, Organisation, "STN001")
       Then("I should be on the initial page")
       InitialPage.isCurrentUrl
       InitialPage.verifyPageTitle(InitialPage.pageTitle)

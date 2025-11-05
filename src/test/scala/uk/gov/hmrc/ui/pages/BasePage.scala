@@ -111,7 +111,7 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
   def waitForPage(): Unit = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("footer")))
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
-    .withTimeout(Duration.ofSeconds(120))
+    .withTimeout(Duration.ofSeconds(15))
     .pollingEvery(Duration.ofMillis(500))
     .ignoring(classOf[NoSuchElementException])
 

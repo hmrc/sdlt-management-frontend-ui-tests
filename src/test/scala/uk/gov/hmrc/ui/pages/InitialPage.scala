@@ -21,6 +21,6 @@ object InitialPage extends BasePage {
   override def pageUrl: String = "stamp-duty-land-tax-management"
 
   override def pageTitle: String =
-    "sdlt-management-frontend - sdlt-management-frontend - GOV.UK"
+    "Overview Page - sdlt-management-frontend - GOV.UK"
 
 }
