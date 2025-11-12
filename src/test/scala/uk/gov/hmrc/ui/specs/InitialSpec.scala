@@ -20,7 +20,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AuthWizard, InitialPage}
+import uk.gov.hmrc.ui.pages.{AuthWizard, HomePage, InProgressReturnsPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -39,8 +39,12 @@ class InitialSpec
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, "STN001")
       Then("I should be on the initial page")
-      InitialPage.isCurrentUrl
-      InitialPage.verifyPageTitle(InitialPage.pageTitle)
+      HomePage.isCurrentUrl
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+      InProgressReturnsPage.navigateToPage(
+        "http://localhost:10912/stamp-duty-land-tax-management/manage-returns/in-progress-returns"
+      )
+      InProgressReturnsPage.verifyPageTitle(InProgressReturnsPage.pageTitle)
     }
   }
 }

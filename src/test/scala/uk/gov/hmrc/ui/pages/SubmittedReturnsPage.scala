@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.ui.pages
 
-object InitialPage extends BasePage {
+object SubmittedReturnsPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-management"
+  override def pageUrl: String = "/manage-returns/submitted-return"
 
   override def pageTitle: String =
-    "Overview Page - sdlt-management-frontend - GOV.UK"
-
+    "Manage returns – Submitted returns – Stamp Taxes Online – GOV.UK"
 }
