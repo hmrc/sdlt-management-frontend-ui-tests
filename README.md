@@ -1,10 +1,10 @@
 **This is the template README. Please update this with project specific content.**
 
-# SDLT Agent Frontend UI Tests
+# SDLT Management Frontend UI Tests
 
 UI journey tests suite for the [sdlt-management-frontend](**This is the template README. Please update this with project specific content.**
 
-# SDLT Agent Frontend UI Tests
+# SDLT Management Frontend UI Tests
 
 UI journey tests suite for the [sdlt-management-frontend](https://github.com/hmrc/sdlt-agent-frontend) using SeleniumWebdriver with ScalaTest.
 
@@ -59,4 +59,4 @@ To run the ZAP tests locally, execute the script:
 ## License
 
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
-) using SeleniumWebdriver with ScalaTest.
+)
