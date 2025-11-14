@@ -21,7 +21,5 @@ object HomePage extends BasePage {
   override def pageUrl: String = "stamp-duty-land-tax-management"
 
   override def pageTitle: String =
-    "Overview Page - Stamp Taxes Online - GOV.UK"
-//    "Homepage – Stamp Taxes Online – GOV.UK\t"
-
+    "Homepage - Stamp Taxes Online - GOV.UK"
 }
