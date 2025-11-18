@@ -15,6 +15,7 @@
  */
 
 package uk.gov.hmrc.ui.pages
+import org.openqa.selenium.By
 
 object InProgressReturnsPage extends BasePage {
 
@@ -22,4 +23,11 @@ object InProgressReturnsPage extends BasePage {
 
   override def pageTitle: String =
     "Manage returns – Returns in progress - Stamp Taxes Online - GOV.UK"
+
+  private val backLink: String =
+    "//a[starts-with(normalize-space(.), 'Back')]"
+
+  override def clickBackLink(): Unit =
+    click(By.xpath(backLink))
+
 }

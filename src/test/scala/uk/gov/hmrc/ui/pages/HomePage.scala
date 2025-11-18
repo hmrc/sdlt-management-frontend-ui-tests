@@ -16,10 +16,18 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.By
+
 object HomePage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-management"
+  override def pageUrl: String = "stamp-duty-land-tax-management/homepage"
 
   override def pageTitle: String =
     "Homepage - Stamp Taxes Online - GOV.UK"
+
+  private val inProgressReturnLink: String =
+    "//a[starts-with(normalize-space(.), 'Returns in progress')]"
+
+  def clickInProgressLink(): Unit =
+    click(By.xpath(inProgressReturnLink))
 }

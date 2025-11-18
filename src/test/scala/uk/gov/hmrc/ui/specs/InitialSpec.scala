@@ -36,15 +36,20 @@ class InitialSpec
 
   Feature("SDLT Management frontend Initial Test") {
     Scenario("Hit the initial start page") {
-      Given("I enter login using the Authority Wizard page")
+      Given("User enters login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, "STN001")
-      Then("I should be on the initial page")
+      Then("User should be navigated to the home page")
       HomePage.isCurrentUrl
       HomePage.verifyPageTitle(HomePage.pageTitle)
-      InProgressReturnsPage.navigateToPage(
-        "http://localhost:10912/stamp-duty-land-tax-management/manage-returns/in-progress-returns"
-      )
+      When("User clicks on the Returns in progress link on the homepage")
+      HomePage.clickInProgressLink()
+      Then("User should be navigated in-progress return page")
       InProgressReturnsPage.verifyPageTitle(InProgressReturnsPage.pageTitle)
+      When("User click on Back Link on the Returns in progress")
+      InProgressReturnsPage.clickBackLink()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
     }
   }
 }
