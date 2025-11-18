@@ -25,9 +25,12 @@ object HomePage extends BasePage {
   override def pageTitle: String =
     "Homepage - Stamp Taxes Online - GOV.UK"
 
-  private val inProgressReturnLink: String =
-    "//a[starts-with(normalize-space(.), 'Returns in progress')]"
-
-  def clickInProgressLink(): Unit =
-    click(By.xpath(inProgressReturnLink))
+  val inProgressReturnLink: By = By.xpath("//a[starts-with(normalize-space(.), 'Returns in progress')]")
+  val submittedReturnsLink: By = By.xpath("//a[starts-with(normalize-space(.), 'Submitted returns')]")
+  val dueForDeletionLink: By   = By.xpath("//a[starts-with(normalize-space(.), 'Returns due for deletion')]")
+  val agentsDetailsLink: By    = By.xpath("//a[starts-with(normalize-space(.), 'Manage agents')]")
+  val addANewAgentLink: By     = By.xpath("//a[starts-with(normalize-space(.), 'Add a new agent')]")
+  val leaveFeedbackLink: By    = By.xpath("//a[starts-with(normalize-space(.), 'Leave feedback')]")
+  val startANewReturnLink: By  = By.xpath("//a[starts-with(normalize-space(.), 'Start a new return')]")
+  val howToPayLink: By         = By.xpath("//a[starts-with(normalize-space(.), 'How to pay')]")
 }
