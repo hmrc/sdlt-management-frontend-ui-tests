@@ -16,6 +16,22 @@
 
 package uk.gov.hmrc.ui.pages
 
+object InProgressReturnsPage extends BasePage {
+
+  override def pageUrl: String = "/manage-returns/in-progress-returns"
+
+  override def pageTitle: String =
+    "Manage returns – Returns in progress - Stamp Taxes Online - GOV.UK"
+}
+
+object SubmittedReturnsPage extends BasePage {
+
+  override def pageUrl: String = "/manage-returns/submitted-return"
+
+  override def pageTitle: String =
+    "Manage returns – Submitted returns - Stamp Taxes Online - GOV.UK"
+}
+
 object DueForDeletionReturnsPage extends BasePage {
 
   override def pageUrl: String = "/manage-returns/returns-due-for-deletion"
