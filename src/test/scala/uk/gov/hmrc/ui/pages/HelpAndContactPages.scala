@@ -16,18 +16,10 @@
 
 package uk.gov.hmrc.ui.pages
 
-object AgentDetailsPage extends BasePage {
+object HowToPayPage extends BasePage {
 
-  override def pageUrl: String = "/manage-returns/submitted-return"
-
-  override def pageTitle: String =
-    "Agent overview – Agent details - Stamp Taxes Online - GOV.UK"
-}
-
-object AddNewAgentPage extends BasePage {
-
-  override def pageUrl: String = "/manage-returns/submitted-return"
+  override def pageUrl: String = "/guidance/pay-stamp-duty-land-tax"
 
   override def pageTitle: String =
-    "What is the agent’s name? – Agent details - Stamp Taxes Online - GOV.UK"
+    "Pay Stamp Duty Land Tax - GOV.UK"
 }
