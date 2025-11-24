@@ -155,4 +155,8 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
   def waitForPageTitle(expectedTitle: String): Unit =
     fluentWait.until(ExpectedConditions.titleIs(expectedTitle))
 
+  def verifyElementIsDisplayed(selector: By): Unit = {
+    val element = waitForVisibilityOfElement(selector)
+    assert(element.isDisplayed, s"Element with selector $selector is not displayed.")
+  }
 }
