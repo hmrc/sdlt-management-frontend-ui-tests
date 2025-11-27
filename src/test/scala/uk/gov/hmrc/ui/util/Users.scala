@@ -31,7 +31,7 @@ object Users {
     case object Organisation
         extends UserTypes(affinity = "Organisation", slug = "org", landingPage = "aboutyourorg", slug2 = "contact/paye")
 
-    case object Agent_Trust
+    case object Agent
         extends UserTypes(affinity = "Agent", slug = "org/trust", landingPage = "aboutyourclient", slug2 = "")
 
   }

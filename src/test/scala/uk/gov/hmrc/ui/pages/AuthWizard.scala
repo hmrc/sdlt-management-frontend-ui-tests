@@ -19,7 +19,6 @@ package uk.gov.hmrc.ui.pages
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.AuthWizard.{click, sendKeys}
 import uk.gov.hmrc.ui.util.Env
-import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.util.Users.{LoginTypes, UserTypes}
 
@@ -58,18 +57,35 @@ object AuthWizard extends BasePage {
     Redirect
   }
 
-  def fillInputs(enrolmentVal: String): this.type = {
-    driver.findElement(affinityGroup).sendKeys("Organisation")
-    driver.findElement(enrolmentKey).sendKeys("IR-SDLT-ORG")
+  def getEnrolmentKeyForAffinity(affinity: String): String =
+    affinity match {
+      case "Organisation" => "IR-SDLT-ORG"
+      case "Agent"        => "IR-SDLT-AGENT"
+      case _              => "IR-SDLT-ORG"
+    }
+
+  def fillInputs(
+    userType: UserTypes,
+    enrolmentVal: String
+  ): this.type = {
+    val affinityGroupValue = userType.affinity
+    val enrolmentKeyValue  = getEnrolmentKeyForAffinity(affinityGroupValue)
+    driver.findElement(affinityGroup).sendKeys(affinityGroupValue)
+    driver.findElement(enrolmentKey).sendKeys(enrolmentKeyValue)
     driver.findElement(enrolmentId).sendKeys("STORN")
     driver.findElement(enrolmentValue).sendKeys(enrolmentVal)
     this
   }
 
-  def login(loginType: LoginTypes, userType: UserTypes, enrolmentVal: String): Unit = {
+  def login(
+    loginType: LoginTypes,
+    userType: UserTypes,
+    enrolmentVal: String
+  ): Unit = {
     AuthWizard.navigateToPage(url)
-    sendKeys(redirectUrl, buildRedirectUrl(HASDIRECT, Organisation))
-    fillInputs(enrolmentVal)
+    sendKeys(redirectUrl, buildRedirectUrl(loginType, Organisation))
+
+    fillInputs(userType, enrolmentVal)
     click(btnSubmit)
   }
 
