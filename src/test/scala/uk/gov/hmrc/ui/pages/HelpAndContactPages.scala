@@ -16,10 +16,24 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.By
+
 object HowToPayPage extends BasePage {
 
   override def pageUrl: String = "/guidance/pay-stamp-duty-land-tax"
 
   override def pageTitle: String =
     "Pay Stamp Duty Land Tax - GOV.UK"
+
+  val howToPayLink: By = By.xpath("//a[starts-with(normalize-space(.), 'How to pay')]")
+
+  val expectedHref: String = "http://www.hmrc.gov.uk/payinghmrc/stamp-land.htm"
+
+  def verifyLink(): Unit = {
+    val linkValue = driver.findElement(howToPayLink).getAttribute("href")
+    assert(
+      linkValue == expectedHref,
+      s"Page title mismatch! Expected: $expectedHref, Actual: $linkValue"
+    )
+  }
 }

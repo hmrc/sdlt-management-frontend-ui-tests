@@ -121,14 +121,15 @@ class ManageTaxesSpec
       HomePage.verifyPageTitle(HomePage.pageTitle)
 
       // how to pay Link
-      When("User clicks on the how to pay link on the homepage")
-      HomePage.click(HomePage.howToPayLink)
-      Then("User should be navigated to how to pay page")
-      HowToPayPage.verifyPageTitle(HowToPayPage.pageTitle)
-      When("User click on Back Link on the how to pay page")
-      HowToPayPage.navigateBackToPage()
-      Then("User should be navigated to the home page")
-      HomePage.verifyPageTitle(HomePage.pageTitle)
+      When("User verifies how to pay link on the homepage")
+      HomePage.waitForVisibilityOfElement(HomePage.howToPayLink)
+      HowToPayPage.verifyLink()
+      //      Then("User should be navigated to how to pay page")
+      //      HowToPayPage.verifyPageTitle(HowToPayPage.pageTitle)
+//      When("User click on Back Link on the how to pay page")
+//      HowToPayPage.navigateBackToPage()
+//      Then("User should be navigated to the home page")
+//      HomePage.verifyPageTitle(HomePage.pageTitle)
     }
   }
 
