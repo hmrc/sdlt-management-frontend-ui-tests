@@ -22,7 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.{AddNewAgentPage, AgentDetailsPage, AuthWizard, DueForDeletionReturnsPage, FeedbackPage, HomePage, HowToPayPage, InProgressReturnsPage, SubmittedReturnsPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
-import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
 
 class ManageTaxesSpec
     extends AnyFeatureSpec
@@ -130,6 +130,105 @@ class ManageTaxesSpec
 //      HowToPayPage.navigateBackToPage()
 //      Then("User should be navigated to the home page")
 //      HomePage.verifyPageTitle(HomePage.pageTitle)
+    }
+  }
+
+  Feature("SDLT Management Jounery tests for Agent") {
+    Scenario("Manage Returns Homepage Links") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Agent, "STN001")
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // In-Progress Returns Link
+      When("User clicks on the Returns in progress link on the homepage")
+      HomePage.click(HomePage.inProgressReturnLink)
+      Then("User should be navigated in-progress return page")
+      InProgressReturnsPage.verifyPageTitle(InProgressReturnsPage.pageTitle)
+      When("User click on Back Link on the Returns in progress")
+      InProgressReturnsPage.clickBackLink()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // Submitted Returns Link
+      When("User clicks on the Submitted returns link on the homepage")
+      HomePage.click(HomePage.submittedReturnsLink)
+      Then("User should be navigated submitted returns page")
+      SubmittedReturnsPage.verifyPageTitle(SubmittedReturnsPage.pageTitle)
+      When("User click on Back Link on the Submitted returns")
+      SubmittedReturnsPage.clickBackLink()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // Due for Deletion Link
+      When("User clicks on the due for deletion link on the homepage")
+      HomePage.click(HomePage.dueForDeletionLink)
+      Then("User should be navigated due for deletion page")
+      //      DueForDeletionReturnsPage.verifyPageTitle(DueForDeletionReturnsPage.pageTitle)
+      When("User click on Back Link on the due for deletion page")
+      DueForDeletionReturnsPage.navigateBackToPage()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+    }
+
+    /* Scenario("Manage Agents Homepage Links") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, "STN002", Some("AGENT"), Some("IR-SDLT-AGENT"))
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // Manage Agents Link
+      When("User clicks on the manage agents link on the homepage")
+      HomePage.click(HomePage.agentsDetailsLink)
+      Then("User should be navigated agent overview page")
+      AgentDetailsPage.verifyPageTitle(AgentDetailsPage.pageTitle)
+      When("User click on Back Link on the Agent overview page")
+      AgentDetailsPage.navigateBackToPage()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // Add new agent Link
+      When("User clicks on the add new agent link on the homepage")
+      HomePage.click(HomePage.addANewAgentLink)
+      Then("User should be navigated what is agent's name page")
+      AddNewAgentPage.verifyPageTitle(AddNewAgentPage.pageTitle)
+      When("User click on Back Link on the What is agent's name page")
+      AddNewAgentPage.navigateBackToPage()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+    }*/
+
+    Scenario("Service feedback journey") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Agent, "STN001")
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // leave feedback Link
+      When("User clicks on the leave feedback link on the homepage")
+      HomePage.click(HomePage.leaveFeedbackLink)
+      Then("User should be navigated to the feedback page")
+      FeedbackPage.fillFeedbackForm()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+    }
+
+    Scenario("Help and contact links") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Agent, "STN001")
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // how to pay Link
+      When("User verifies how to pay link on the homepage")
+      HomePage.waitForVisibilityOfElement(HomePage.howToPayLink)
+      HowToPayPage.verifyLink()
+      //      Then("User should be navigated to how to pay page")
+      //      HowToPayPage.verifyPageTitle(HowToPayPage.pageTitle)
+      //      When("User click on Back Link on the how to pay page")
+      //      HowToPayPage.navigateBackToPage()
+      //      Then("User should be navigated to the home page")
+      //      HomePage.verifyPageTitle(HomePage.pageTitle)
     }
   }
 }
