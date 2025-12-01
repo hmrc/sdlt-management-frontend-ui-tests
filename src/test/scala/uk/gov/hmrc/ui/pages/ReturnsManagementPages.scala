@@ -42,5 +42,5 @@ object DueForDeletionReturnsPage extends BasePage {
     "Manage returns – Returns due for deletion - Stamp Taxes Online - GOV.UK"
 
   val inProgressReturnsDeletionTab: By = By.id("tab_in-progress")
-  val submittedReturnsDeletionTab: By = By.id("tab_submitted")
+  val submittedReturnsDeletionTab: By  = By.id("tab_submitted")
 }
