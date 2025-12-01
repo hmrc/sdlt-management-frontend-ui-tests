@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.By
+
 object InProgressReturnsPage extends BasePage {
 
   override def pageUrl: String = "/manage-returns/in-progress-returns"
@@ -37,5 +39,8 @@ object DueForDeletionReturnsPage extends BasePage {
   override def pageUrl: String = "/manage-returns/returns-due-for-deletion"
 
   override def pageTitle: String =
-    "Manage returns – Returns due for deletion – Stamp Taxes Online – GOV.UK"
+    "Manage returns – Returns due for deletion - Stamp Taxes Online - GOV.UK"
+
+  val inProgressReturnsDeletionTab: By = By.id("tab_in-progress")
+  val submittedReturnsDeletionTab: By  = By.id("tab_submitted")
 }
