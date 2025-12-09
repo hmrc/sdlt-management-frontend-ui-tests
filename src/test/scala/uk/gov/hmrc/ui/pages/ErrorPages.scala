@@ -18,10 +18,10 @@ package uk.gov.hmrc.ui.pages
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PageNotFound extends BasePage {
+object AccessDeniedPage extends BasePage {
 
-  override def pageUrl: String = "/manage-returns/submitted-return"
+  override def pageUrl: String = "/access-denied"
 
   override def pageTitle: String =
-    "Agent overview – Agent details - Stamp Taxes Online - GOV.UK"
+    "Sorry, there is a problem with the service - Stamp Taxes Online - GOV.UK"
 }
