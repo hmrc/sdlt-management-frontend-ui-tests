@@ -66,26 +66,29 @@ object AuthWizard extends BasePage {
 
   def fillInputs(
     userType: UserTypes,
-    enrolmentVal: String
+    enrolmentVal: String,
+    enrolmentKeyOverride: Option[String] = None
   ): this.type = {
-    val affinityGroupValue = userType.affinity
-    val enrolmentKeyValue  = getEnrolmentKeyForAffinity(affinityGroupValue)
+    val affinityGroupValue        = userType.affinity
+    val enrolmentKeyValue: String = enrolmentKeyOverride.getOrElse(getEnrolmentKeyForAffinity(affinityGroupValue))
+
     driver.findElement(affinityGroup).sendKeys(affinityGroupValue)
     driver.findElement(enrolmentKey).sendKeys(enrolmentKeyValue)
     driver.findElement(enrolmentId).sendKeys("STORN")
     driver.findElement(enrolmentValue).sendKeys(enrolmentVal)
+
     this
   }
 
   def login(
     loginType: LoginTypes,
     userType: UserTypes,
-    enrolmentVal: String
+    enrolmentVal: String,
+    enrolmentKeyOverride: Option[String] = None
   ): Unit = {
     AuthWizard.navigateToPage(url)
     sendKeys(redirectUrl, buildRedirectUrl(loginType, Organisation))
-
-    fillInputs(userType, enrolmentVal)
+    fillInputs(userType, enrolmentVal, enrolmentKeyOverride)
     click(btnSubmit)
   }
 

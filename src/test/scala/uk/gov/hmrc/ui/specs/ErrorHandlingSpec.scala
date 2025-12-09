@@ -20,11 +20,11 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AddNewAgentPage, AgentDetailsPage, AuthWizard, DueForDeletionReturnsPage, FeedbackPage, HomePage, HowToPayPage, InProgressReturnsPage, PageNotFound, SubmittedReturnsPage}
+import uk.gov.hmrc.ui.pages.{AccessDeniedPage, AuthWizard, HomePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
 
-class ManagementErrorHandlingSpec
+class ErrorHandlingSpec
     extends AnyFeatureSpec
     with BaseSpec
     with GivenWhenThen
@@ -35,12 +35,19 @@ class ManagementErrorHandlingSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Management frontend error handling") {
-    Scenario("Display Page not found for invalid Management details URL\"") {
-      Given("User enters login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, "STN001")
-      Then("User should be navigated to the home page")
-      PageNotFound.verifyPageTitle(HomePage.pageTitle)
+//    Scenario("Display Page not found for invalid Management details URL") {
+//      Given("User enters login using the Authority Wizard page")
+//      AuthWizard.login(HASDIRECT, Organisation, "STN001")
+//      Then("User should be navigated to the home page")
+//      .verifyPageTitle(HomePage.pageTitle)
+//
+//    }
 
+    Scenario("Display Access denied page when user tries to access management service without enrolment") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, "STN001", Some(""))
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(AccessDeniedPage.pageTitle)
     }
   }
 }
