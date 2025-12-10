@@ -37,9 +37,16 @@ class ManagementErrorHandlingSpec
   Feature("SDLT Management frontend error handling") {
     Scenario("Display Page not found for invalid Management details URL\"") {
       Given("User enters login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, "STN001")
-      Then("User should be navigated to the home page")
-      PageNotFound.verifyPageTitle(HomePage.pageTitle)
+      // AuthWizard.login(HASDIRECT, Organisation, "STN001")
+      AuthWizard.login(
+        HASDIRECT,
+        Organisation,
+        "STN001",
+        Some("http://localhost:10912/stamp-duty-land-tax-management1")
+      )
+      Then("User should be navigated to Page not Found error screen")
+      And("User verify page title on page not found")
+      PageNotFound.verifyPageTitle(PageNotFound.pageTitle)
 
     }
   }

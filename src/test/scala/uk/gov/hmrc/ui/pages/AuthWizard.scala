@@ -46,16 +46,15 @@ object AuthWizard extends BasePage {
   val btnSubmit: By       = By.id("submit")
   val btnAddEnrolment: By = By.id("add-ident-btn-0")
 
-  def buildRedirectUrl(loginType: LoginTypes, userType: UserTypes): String = {
-    val Redirect =
+  def buildRedirectUrl(loginType: LoginTypes, userType: UserTypes, customRedirect: Option[String] = None): String =
+    customRedirect.getOrElse {
       if (
         Env.baseUrl.equals(
           "http://localhost:9949/auth-login-stub/gg-sign-in?continue=http://localhost:10912/stamp-duty-land-tax-management"
         )
       ) "http://localhost:10912/stamp-duty-land-tax-management"
       else s"/stamp-duty-land-tax-management"
-    Redirect
-  }
+    }
 
   def getEnrolmentKeyForAffinity(affinity: String): String =
     affinity match {
@@ -80,10 +79,12 @@ object AuthWizard extends BasePage {
   def login(
     loginType: LoginTypes,
     userType: UserTypes,
-    enrolmentVal: String
+    enrolmentVal: String,
+    customRedirect: Option[String] = None
   ): Unit = {
     AuthWizard.navigateToPage(url)
-    sendKeys(redirectUrl, buildRedirectUrl(loginType, Organisation))
+
+    sendKeys(redirectUrl, buildRedirectUrl(loginType, userType, customRedirect))
 
     fillInputs(userType, enrolmentVal)
     click(btnSubmit)
