@@ -48,6 +48,8 @@ class ErrorHandlingSpec
       AuthWizard.login(HASDIRECT, Organisation, "STN001", Some(""))
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(AccessDeniedPage.pageTitle)
+      AccessDeniedPage.click(AccessDeniedPage.continueToAccountLinkText)
+      HomePage.verifyPageTitle("Sign in to HMRC - Sign in to HMRC online services - GOV.UK")
     }
   }
 }

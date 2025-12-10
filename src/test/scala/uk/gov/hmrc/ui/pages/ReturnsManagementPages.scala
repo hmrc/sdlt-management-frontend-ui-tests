@@ -24,6 +24,7 @@ object InProgressReturnsPage extends BasePage {
 
   override def pageTitle: String =
     "Manage returns – Returns in progress - Stamp Taxes Online - GOV.UK"
+  val startNewReturnLink: By     = By.xpath("//a[starts-with(normalize-space(.), 'Start a new return')]")
 }
 
 object SubmittedReturnsPage extends BasePage {
@@ -32,6 +33,7 @@ object SubmittedReturnsPage extends BasePage {
 
   override def pageTitle: String =
     "Manage returns – Submitted returns - Stamp Taxes Online - GOV.UK"
+  val startNewReturnLink: By     = By.xpath("//a[starts-with(normalize-space(.), 'Start a new return')]")
 }
 
 object DueForDeletionReturnsPage extends BasePage {
@@ -43,4 +45,13 @@ object DueForDeletionReturnsPage extends BasePage {
 
   val inProgressReturnsDeletionTab: By = By.id("tab_in-progress")
   val submittedReturnsDeletionTab: By  = By.id("tab_submitted")
+  val startNewReturnLink: By           = By.xpath("//a[starts-with(normalize-space(.), 'Start a new return')]")
+}
+
+object StartNewReturnPage extends BasePage {
+
+  override def pageUrl: String = "/preliminary-questions/before-you-start"
+
+  override def pageTitle: String =
+    "Before you start a new Stamp Tax return – Preliminary questions - Stamp Taxes Online - GOV.UK"
 }

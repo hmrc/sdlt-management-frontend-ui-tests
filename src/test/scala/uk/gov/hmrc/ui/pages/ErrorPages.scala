@@ -16,11 +16,14 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
 object AccessDeniedPage extends BasePage {
 
   override def pageUrl: String = "/access-denied"
+
+  val continueToAccountLinkText: By = By.linkText("Continue to your account")
 
   override def pageTitle: String =
     "Sorry, there is a problem with the service - Stamp Taxes Online - GOV.UK"
