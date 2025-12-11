@@ -21,6 +21,7 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.{AccessDeniedPage, AuthWizard, HomePage, UnauthorisedIndividualErrorPage}
+import uk.gov.hmrc.ui.pages.{AccessDeniedPage, AuthWizard, HomePage, PageNotFound}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
 
@@ -35,14 +36,6 @@ class ErrorHandlingSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Management frontend error handling") {
-//    Scenario("Display Page not found for invalid Management details URL") {
-//      Given("User enters login using the Authority Wizard page")
-//      AuthWizard.login(HASDIRECT, Organisation, "STN001")
-//      Then("User should be navigated to the home page")
-//      .verifyPageTitle(HomePage.pageTitle)
-//
-//    }
-
     Scenario("Display Access denied page when user tries to access management service without enrolment") {
       Given("User enters login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, "STN001", Some(""))
@@ -52,11 +45,25 @@ class ErrorHandlingSpec
       HomePage.verifyPageTitle("Sign in to HMRC - Sign in to HMRC online services - GOV.UK")
     }
 
-    Scenario("Display error page will be presented to a user when they are trying to access the at a glance page") {
+    Scenario("Display unauthorised individual error page when individual user tries to access management service") {
       Given("User enters login using the Authority Wizard page")
       AuthWizard.loginAsIndividual(HASDIRECT)
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(UnauthorisedIndividualErrorPage.pageTitle)
+    }
+
+    Scenario("Display Page not found when user tries to enter invalid Url") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(
+        HASDIRECT,
+        Organisation,
+        "STN001"
+      )
+      PageNotFound.navigateToPage(
+        "http://localhost:10912/stamp-duty-land-tax-management1"
+      )
+      Then("User should be navigated to Page not Found error screen")
+      PageNotFound.verifyPageTitle(PageNotFound.pageTitle)
     }
   }
 }
