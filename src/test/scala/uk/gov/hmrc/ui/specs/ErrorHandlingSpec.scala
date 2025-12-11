@@ -20,7 +20,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AccessDeniedPage, AuthWizard, HomePage}
+import uk.gov.hmrc.ui.pages.{AccessDeniedPage, AuthWizard, HomePage, UnauthorisedIndividualErrorPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
 
@@ -50,6 +50,13 @@ class ErrorHandlingSpec
       HomePage.verifyPageTitle(AccessDeniedPage.pageTitle)
       AccessDeniedPage.click(AccessDeniedPage.continueToAccountLinkText)
       HomePage.verifyPageTitle("Sign in to HMRC - Sign in to HMRC online services - GOV.UK")
+    }
+
+    Scenario("Display error page will be presented to a user when they are trying to access the at a glance page") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.loginAsIndividual(HASDIRECT)
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(UnauthorisedIndividualErrorPage.pageTitle)
     }
   }
 }
