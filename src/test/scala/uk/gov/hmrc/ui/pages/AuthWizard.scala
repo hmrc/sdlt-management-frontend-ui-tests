@@ -90,6 +90,7 @@ object AuthWizard extends BasePage {
     sendKeys(redirectUrl, buildRedirectUrl(loginType, Organisation))
     fillInputs(userType, enrolmentVal, enrolmentKeyOverride)
     click(btnSubmit)
+    
   }
 
   def loginAsIndividual(
