@@ -90,7 +90,6 @@ object AuthWizard extends BasePage {
     sendKeys(redirectUrl, buildRedirectUrl(loginType, Organisation))
     fillInputs(userType, enrolmentVal, enrolmentKeyOverride)
     click(btnSubmit)
-    
   }
 
   def loginAsIndividual(
@@ -98,7 +97,6 @@ object AuthWizard extends BasePage {
   ): Unit = {
     AuthWizard.navigateToPage(url)
     sendKeys(redirectUrl, buildRedirectUrl(loginType, UserTypes.Individual))
-    click(btnSubmit) 
+    click(btnSubmit)
   }
-
 }
