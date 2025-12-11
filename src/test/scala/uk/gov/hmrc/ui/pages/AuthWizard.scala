@@ -92,4 +92,11 @@ object AuthWizard extends BasePage {
     click(btnSubmit)
   }
 
+  def loginAsIndividual(
+    loginType: LoginTypes
+  ): Unit = {
+    AuthWizard.navigateToPage(url)
+    sendKeys(redirectUrl, buildRedirectUrl(loginType, UserTypes.Individual))
+    click(btnSubmit)
+  }
 }

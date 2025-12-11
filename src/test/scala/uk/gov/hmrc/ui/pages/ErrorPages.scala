@@ -21,10 +21,18 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object AccessDeniedPage extends BasePage {
 
-  override def pageUrl: String = "/access-denied"
+  val pageUrl: String = "/access-denied"
 
   val continueToAccountLinkText: By = By.linkText("Continue to your account")
 
-  override def pageTitle: String =
+  val pageTitle: String =
     "Sorry, there is a problem with the service - Stamp Taxes Online - GOV.UK"
+}
+
+object UnauthorisedIndividualErrorPage extends BasePage {
+
+  val pageUrl: String = "unauthorised/individual"
+
+  val pageTitle: String =
+    "Sorry, you are unable to use this service - Stamp Taxes Online - GOV.UK"
 }
