@@ -95,11 +95,9 @@ object AuthWizard extends BasePage {
   def loginAsIndividual(
     loginType: LoginTypes
   ): Unit = {
-    AuthWizard.navigateToPage(url) // Navigate to the login page
-    sendKeys(redirectUrl, buildRedirectUrl(loginType, UserTypes.Individual)) // Set the redirect URL
-
-    // driver.findElement(affinityGroup).sendKeys("Individual")
-    click(btnSubmit) // Submit the form
+    AuthWizard.navigateToPage(url)
+    sendKeys(redirectUrl, buildRedirectUrl(loginType, UserTypes.Individual))
+    click(btnSubmit) 
   }
 
 }
