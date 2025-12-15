@@ -77,7 +77,7 @@ class ManageTaxesOrgSpec
 
     Scenario("Manage Agents Homepage Links") {
       Given("User enters login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, "STN002")
+      AuthWizard.login(HASDIRECT, Organisation, "STN004")
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(HomePage.pageTitle)
 
@@ -100,13 +100,8 @@ class ManageTaxesOrgSpec
       AddNewAgentPage.navigateBackToPage()
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(HomePage.pageTitle)
-    }
 
-    Scenario("Signout link on address page") {
-      Given("User enters login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, "STN004")
-      Then("User navigates to Agent details page")
-      HomePage.verifyPageTitle(HomePage.pageTitle)
+      // Check signout page link
       When("User clicks on the manage agents link on the homepage")
       HomePage.click(HomePage.agentsDetailsLink)
       Then("User should be navigated agent overview page")
@@ -118,6 +113,7 @@ class ManageTaxesOrgSpec
       Then("User is navigated to Check Address page")
       HomePage.signOutLink()
       ChangeAddressPage.verifyPageTitle(ChangeAddressPage.feedBackPageForAddress)
+
     }
 
     Scenario("Service feedback journey") {
