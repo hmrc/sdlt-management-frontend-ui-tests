@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.By
+
 object AgentDetailsPage extends BasePage {
 
   override def pageUrl: String = "/manage-returns/submitted-return"
@@ -30,4 +32,35 @@ object AddNewAgentPage extends BasePage {
 
   override def pageTitle: String =
     "What is the agent’s name? – Agent details - Stamp Taxes Online - GOV.UK"
+}
+
+object ChangeAddressPage extends BasePage {
+
+  override def pageUrl: String =
+    "/manage-returns/agent/change-address" // <-- use correct route for your service
+
+  override def pageTitle: String =
+    "Check the agent’s address – Agent details - Stamp Taxes Online - GOV.UK"
+
+  val feedBackPageForAddress: String =
+    "Send your feedback – Contact HMRC – GOV.UK"
+
+  def lnkChangeAgent(agentName: String): By =
+    By.xpath(
+      s"//dt[contains(normalize-space(), '$agentName')]" +
+        "/following-sibling::dd//a[contains(normalize-space(), 'Change')]"
+    )
+
+  def clickChangeAgent(agentName: String): Unit = {
+    waitForElementToBeClickable(lnkChangeAgent(agentName))
+    click(lnkChangeAgent(agentName))
+  }
+
+  val linkChangeAgentAddress: By = By.xpath("//a[@id='change-agent-address']")
+
+  def clickChangeAgentAddress(): Unit = {
+    val element = waitForElementToBeClickable(linkChangeAgentAddress)
+    element.click()
+  }
+
 }

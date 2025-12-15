@@ -20,7 +20,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AddNewAgentPage, AgentDetailsPage, AuthWizard, DueForDeletionReturnsPage, FeedbackPage, HomePage, HowToPayPage, InProgressReturnsPage, StartNewReturnPage, SubmittedReturnsPage}
+import uk.gov.hmrc.ui.pages.{AddNewAgentPage, AgentDetailsPage, AuthWizard, ChangeAddressPage, DueForDeletionReturnsPage, FeedbackPage, HomePage, HowToPayPage, InProgressReturnsPage, StartNewReturnPage, SubmittedReturnsPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
 
@@ -100,6 +100,24 @@ class ManageTaxesOrgSpec
       AddNewAgentPage.navigateBackToPage()
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(HomePage.pageTitle)
+    }
+
+    Scenario("Signout link on address page") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, "STN004")
+      Then("User navigates to Agent details page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+      When("User clicks on the manage agents link on the homepage")
+      HomePage.click(HomePage.agentsDetailsLink)
+      Then("User should be navigated agent overview page")
+      AgentDetailsPage.verifyPageTitle(AgentDetailsPage.pageTitle)
+      When("User clicks on Change Address for a specific agent on Agent details page")
+      ChangeAddressPage.clickChangeAgent("Thamesbridge Legal Group")
+      When("User clicks on Change Address for a specific agent on Agent details page")
+      ChangeAddressPage.clickChangeAgentAddress()
+      Then("User is navigated to Check Address page")
+      HomePage.signOutLink()
+      ChangeAddressPage.verifyPageTitle(ChangeAddressPage.feedBackPageForAddress)
     }
 
     Scenario("Service feedback journey") {
