@@ -33,4 +33,5 @@ object HomePage extends BasePage {
   val leaveFeedbackLink: By    = By.xpath("//a[starts-with(normalize-space(.), 'Leave feedback')]")
   val startANewReturnLink: By  = By.xpath("//a[starts-with(normalize-space(.), 'Start a new return')]")
   val howToPayLink: By         = By.xpath("//a[starts-with(normalize-space(.), 'How to pay')]")
+  val signOut                  = By.cssSelector("a.hmrc-sign-out-nav__link")
 }

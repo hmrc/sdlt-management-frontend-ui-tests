@@ -57,6 +57,12 @@ class ManageTaxesAgentSpec
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(HomePage.pageTitle)
 
+      // Signout link visible
+      When("User clicks on Signout link on homepage")
+      HomePage.verifyElementIsDisplayed(HomePage.signOut)
+      // HomePage.signOutLink()
+      // FeedbackPage.verifyPageTitle(FeedbackPage.SignOutFeedback)
+
       // In-Progress Returns Link
       When("User clicks on the Returns in progress link on the homepage")
       HomePage.click(HomePage.inProgressReturnLink)
