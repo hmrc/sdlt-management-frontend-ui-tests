@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.By
+
 object AgentDetailsPage extends BasePage {
 
   override def pageUrl: String = "/manage-returns/submitted-return"

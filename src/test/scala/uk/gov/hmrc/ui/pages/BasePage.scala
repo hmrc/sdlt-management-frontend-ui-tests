@@ -51,7 +51,7 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     val txtYear: By         = By.ById("value.year")
     val txtEmailAddress: By = By.cssSelector("#value")
     val cbxConfirm          = "#value_0"
-    val signOut             = ".govuk-link hmrc-sign-out-nav__link"
+    val signOut             = ".hmrc-sign-out-nav"
   }
 
   def pageUrl: String
@@ -161,4 +161,8 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     val element = waitForVisibilityOfElement(selector)
     assert(element.isDisplayed, s"Element with selector $selector is not displayed.")
   }
+
+  def waitForElementToBeClickable(selector: By): WebElement =
+    new WebDriverWait(driver, Duration.ofSeconds(10))
+      .until(ExpectedConditions.elementToBeClickable(selector))
 }

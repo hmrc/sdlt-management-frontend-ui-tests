@@ -77,7 +77,7 @@ class ManageTaxesOrgSpec
 
     Scenario("Manage Agents Homepage Links") {
       Given("User enters login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, "STN002")
+      AuthWizard.login(HASDIRECT, Organisation, "STN004")
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(HomePage.pageTitle)
 
