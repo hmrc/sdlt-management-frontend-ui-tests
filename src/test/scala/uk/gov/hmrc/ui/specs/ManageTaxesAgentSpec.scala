@@ -89,34 +89,27 @@ class ManageTaxesAgentSpec
       DueForDeletionReturnsPage.navigateBackToPage()
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // Manage Agents Link
+      When("User clicks on the manage agents link on the homepage")
+      HomePage.click(HomePage.agentsDetailsLink)
+      Then("User should be navigated agent overview page")
+      AgentDetailsPage.verifyPageTitle(AgentDetailsPage.pageTitle)
+      When("User click on Back Link on the Agent overview page")
+      AgentDetailsPage.navigateBackToPage()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+
+      // Add new agent Link
+      When("User clicks on the add new agent link on the homepage")
+      HomePage.click(HomePage.addANewAgentLink)
+      Then("User should be navigated what is agent's name page")
+      AddNewAgentPage.verifyPageTitle(AddNewAgentPage.pageTitle)
+      When("User click on Back Link on the What is agent's name page")
+      AddNewAgentPage.navigateBackToPage()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
     }
-
-    /* Scenario("Manage Agents Homepage Links") {
-     Given("User enters login using the Authority Wizard page")
-     AuthWizard.login(HASDIRECT, Organisation, "STN002", Some("AGENT"), Some("IR-SDLT-AGENT"))
-     Then("User should be navigated to the home page")
-     HomePage.verifyPageTitle(HomePage.pageTitle)
-
-     // Manage Agents Link
-     When("User clicks on the manage agents link on the homepage")
-     HomePage.click(HomePage.agentsDetailsLink)
-     Then("User should be navigated agent overview page")
-     AgentDetailsPage.verifyPageTitle(AgentDetailsPage.pageTitle)
-     When("User click on Back Link on the Agent overview page")
-     AgentDetailsPage.navigateBackToPage()
-     Then("User should be navigated to the home page")
-     HomePage.verifyPageTitle(HomePage.pageTitle)
-
-     // Add new agent Link
-     When("User clicks on the add new agent link on the homepage")
-     HomePage.click(HomePage.addANewAgentLink)
-     Then("User should be navigated what is agent's name page")
-     AddNewAgentPage.verifyPageTitle(AddNewAgentPage.pageTitle)
-     When("User click on Back Link on the What is agent's name page")
-     AddNewAgentPage.navigateBackToPage()
-     Then("User should be navigated to the home page")
-     HomePage.verifyPageTitle(HomePage.pageTitle)
-   }*/
 
     Scenario("Service feedback journey") {
       Given("User enters login using the Authority Wizard page")
