@@ -89,6 +89,13 @@ class ManageTaxesAgentSpec
       DueForDeletionReturnsPage.navigateBackToPage()
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(HomePage.pageTitle)
+    }
+
+    Scenario("Manage Returns Homepage Links") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Agent, "STN002")
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
 
       // Manage Agents Link
       When("User clicks on the manage agents link on the homepage")
