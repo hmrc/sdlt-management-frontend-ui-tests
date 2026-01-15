@@ -38,7 +38,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
-import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
+import uk.gov.hmrc.ui.util.Users.UserTypes.Agent
 
 class ManageTaxesAgentSpec
     extends AnyFeatureSpec
@@ -51,7 +51,7 @@ class ManageTaxesAgentSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Management Journey tests for Agent") {
-    Scenario("Manage Returns Homepage Links") {
+    Scenario("Manage Returns Homepage Returns Links") {
       Given("User enters login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Agent, "STN001")
       Then("User should be navigated to the home page")
