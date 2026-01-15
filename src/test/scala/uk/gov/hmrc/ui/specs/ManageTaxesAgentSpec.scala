@@ -38,7 +38,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
-import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
+import uk.gov.hmrc.ui.util.Users.UserTypes.Agent
 
 class ManageTaxesAgentSpec
     extends AnyFeatureSpec
@@ -51,7 +51,7 @@ class ManageTaxesAgentSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Management Journey tests for Agent") {
-    Scenario("Manage Returns Homepage Links") {
+    Scenario("Manage Returns Homepage Returns Links") {
       Given("User enters login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Agent, "STN001")
       Then("User should be navigated to the home page")
@@ -91,32 +91,32 @@ class ManageTaxesAgentSpec
       HomePage.verifyPageTitle(HomePage.pageTitle)
     }
 
-    /* Scenario("Manage Agents Homepage Links") {
-     Given("User enters login using the Authority Wizard page")
-     AuthWizard.login(HASDIRECT, Organisation, "STN002", Some("AGENT"), Some("IR-SDLT-AGENT"))
-     Then("User should be navigated to the home page")
-     HomePage.verifyPageTitle(HomePage.pageTitle)
+    Scenario("Manage Returns Homepage Links") {
+      Given("User enters login using the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Agent, "STN002")
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
 
-     // Manage Agents Link
-     When("User clicks on the manage agents link on the homepage")
-     HomePage.click(HomePage.agentsDetailsLink)
-     Then("User should be navigated agent overview page")
-     AgentDetailsPage.verifyPageTitle(AgentDetailsPage.pageTitle)
-     When("User click on Back Link on the Agent overview page")
-     AgentDetailsPage.navigateBackToPage()
-     Then("User should be navigated to the home page")
-     HomePage.verifyPageTitle(HomePage.pageTitle)
+      // Manage Agents Link
+      When("User clicks on the manage agents link on the homepage")
+      HomePage.click(HomePage.agentsDetailsLink)
+      Then("User should be navigated agent overview page")
+      AgentDetailsPage.verifyPageTitle(AgentDetailsPage.pageTitle)
+      When("User click on Back Link on the Agent overview page")
+      AgentDetailsPage.navigateBackToPage()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
 
-     // Add new agent Link
-     When("User clicks on the add new agent link on the homepage")
-     HomePage.click(HomePage.addANewAgentLink)
-     Then("User should be navigated what is agent's name page")
-     AddNewAgentPage.verifyPageTitle(AddNewAgentPage.pageTitle)
-     When("User click on Back Link on the What is agent's name page")
-     AddNewAgentPage.navigateBackToPage()
-     Then("User should be navigated to the home page")
-     HomePage.verifyPageTitle(HomePage.pageTitle)
-   }*/
+      // Add new agent Link
+      When("User clicks on the add new agent link on the homepage")
+      HomePage.click(HomePage.addANewAgentLink)
+      Then("User should be navigated what is agent's name page")
+      AddNewAgentPage.verifyPageTitle(AddNewAgentPage.pageTitle)
+      When("User click on Back Link on the What is agent's name page")
+      AddNewAgentPage.navigateBackToPage()
+      Then("User should be navigated to the home page")
+      HomePage.verifyPageTitle(HomePage.pageTitle)
+    }
 
     Scenario("Service feedback journey") {
       Given("User enters login using the Authority Wizard page")
