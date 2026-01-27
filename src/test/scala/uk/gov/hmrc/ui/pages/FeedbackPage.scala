@@ -51,5 +51,8 @@ object FeedbackPage extends BasePage {
 
     // Switch back to the original tab
     driver.switchTo().window(originalTab)
+
+    val SignOutFeedback: String =
+      "Send your feedback – Contact HMRC – GOV.UK"
   }
 }
