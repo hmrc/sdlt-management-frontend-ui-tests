@@ -43,7 +43,7 @@ class ErrorHandlingSpec
       HomePage.verifyPageTitle(AccessDeniedPage.pageTitle)
       val actualHref = AccessDeniedPage.getAttribute(AccessDeniedPage.continueToAccountLinkText, "href")
       actualHref shouldBe "https://localhost:9280/account"
-   }
+    }
 
     Scenario("Display error page will be presented to a user when they are trying to access the at a glance page") {
       Given("User enters login using the Authority Wizard page")
