@@ -22,7 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.{AddNewAgentPage, AgentDetailsPage, AuthWizard, DueForDeletionReturnsPage, FeedbackPage, HomePage, HowToPayPage, InProgressReturnsPage, StartNewReturnPage, SubmittedReturnsPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
-import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
+import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
 class ManageTaxesOrgSpec
     extends AnyFeatureSpec

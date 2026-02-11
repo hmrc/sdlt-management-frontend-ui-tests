@@ -17,7 +17,6 @@
 package uk.gov.hmrc.ui.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.ui.pages.BasePage
 
 object AccessDeniedPage extends BasePage {
 
