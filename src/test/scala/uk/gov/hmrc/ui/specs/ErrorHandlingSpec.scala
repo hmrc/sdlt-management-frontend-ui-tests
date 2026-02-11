@@ -22,7 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.{AccessDeniedPage, AuthWizard, HomePage, UnauthorisedIndividualErrorPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
-import uk.gov.hmrc.ui.util.Users.UserTypes.{Agent, Organisation}
+import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
 class ErrorHandlingSpec
     extends AnyFeatureSpec
@@ -35,22 +35,15 @@ class ErrorHandlingSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Management frontend error handling") {
-//    Scenario("Display Page not found for invalid Management details URL") {
-//      Given("User enters login using the Authority Wizard page")
-//      AuthWizard.login(HASDIRECT, Organisation, "STN001")
-//      Then("User should be navigated to the home page")
-//      .verifyPageTitle(HomePage.pageTitle)
-//
-//    }
 
     Scenario("Display Access denied page when user tries to access management service without enrolment") {
       Given("User enters login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, "STN001", Some(""))
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(AccessDeniedPage.pageTitle)
-      AccessDeniedPage.click(AccessDeniedPage.continueToAccountLinkText)
-      HomePage.verifyPageTitle("Sign in to HMRC - Sign in to HMRC online services - GOV.UK")
-    }
+      val actualHref = AccessDeniedPage.getAttribute(AccessDeniedPage.continueToAccountLinkText, "href")
+      actualHref shouldBe "https://localhost:9280/account"
+   }
 
     Scenario("Display error page will be presented to a user when they are trying to access the at a glance page") {
       Given("User enters login using the Authority Wizard page")
