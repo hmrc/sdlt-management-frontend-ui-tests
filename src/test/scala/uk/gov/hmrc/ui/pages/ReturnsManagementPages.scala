@@ -32,7 +32,7 @@ object SubmittedReturnsPage extends BasePage {
   override def pageUrl: String = "/manage-returns/submitted-return"
 
   override def pageTitle: String =
-    "Manage returns – Submitted returns - Stamp Taxes Online - GOV.UK"
+    "Submitted returns – Manage returns - Stamp Taxes Online - GOV.UK"
   val startNewReturnLink: By     = By.xpath("//a[starts-with(normalize-space(.), 'Start a new return')]")
 }
 
@@ -41,7 +41,7 @@ object DueForDeletionReturnsPage extends BasePage {
   override def pageUrl: String = "/manage-returns/returns-due-for-deletion"
 
   override def pageTitle: String =
-    "Manage returns – Returns due for deletion - Stamp Taxes Online - GOV.UK"
+    "Returns due for deletion – Manage returns - Stamp Taxes Online - GOV.UK"
 
   val inProgressReturnsDeletionTab: By = By.id("tab_in-progress")
   val submittedReturnsDeletionTab: By  = By.id("tab_submitted")

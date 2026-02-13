@@ -23,7 +23,7 @@ object HomePage extends BasePage {
   override def pageUrl: String = "stamp-duty-land-tax-management/homepage"
 
   override def pageTitle: String =
-    "Homepage - Stamp Taxes Online - GOV.UK"
+    "Manage your Stamp Taxes - Stamp Taxes Online - GOV.UK"
 
   val inProgressReturnLink: By = By.xpath("//a[starts-with(normalize-space(.), 'Returns in progress')]")
   val submittedReturnsLink: By = By.xpath("//a[starts-with(normalize-space(.), 'Submitted returns')]")

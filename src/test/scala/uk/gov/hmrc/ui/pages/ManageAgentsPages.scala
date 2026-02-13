@@ -21,7 +21,7 @@ object AgentDetailsPage extends BasePage {
   override def pageUrl: String = "/manage-returns/submitted-return"
 
   override def pageTitle: String =
-    "Agent overview – Agent details - Stamp Taxes Online - GOV.UK"
+    "Agent overview – Manage agents - Stamp Taxes Online - GOV.UK"
 }
 
 object AddNewAgentPage extends BasePage {
@@ -29,5 +29,5 @@ object AddNewAgentPage extends BasePage {
   override def pageUrl: String = "/manage-returns/submitted-return"
 
   override def pageTitle: String =
-    "What is the agent’s name? – Agent details - Stamp Taxes Online - GOV.UK"
+    "What is the agent’s name? – Manage agents - Stamp Taxes Online - GOV.UK"
 }
