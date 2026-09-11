@@ -41,8 +41,6 @@ class ErrorHandlingSpec
       AuthWizard.login(HASDIRECT, Organisation, "STN001", Some(""))
       Then("User should be navigated to the home page")
       HomePage.verifyPageTitle(AccessDeniedPage.pageTitle)
-      val actualHref = AccessDeniedPage.getAttribute(AccessDeniedPage.continueToAccountLinkText, "href")
-      actualHref shouldBe "https://localhost:9280/account"
     }
 
     Scenario("Display error page will be presented to a user when they are trying to access the at a glance page") {

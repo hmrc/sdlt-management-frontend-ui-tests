@@ -16,16 +16,12 @@
 
 package uk.gov.hmrc.ui.pages
 
-import org.openqa.selenium.By
-
 object AccessDeniedPage extends BasePage {
 
-  val pageUrl: String = "/access-denied"
-
-  val continueToAccountLinkText: By = By.linkText("Continue to your account")
+  val pageUrl: String = "no-access"
 
   val pageTitle: String =
-    "Sorry, there is a problem with the service - Stamp Taxes Online - GOV.UK"
+    "You do not have access to Stamp Taxes Online - Stamp Taxes Online - GOV.UK"
 }
 
 object UnauthorisedIndividualErrorPage extends BasePage {
@@ -33,5 +29,5 @@ object UnauthorisedIndividualErrorPage extends BasePage {
   val pageUrl: String = "unauthorised/individual"
 
   val pageTitle: String =
-    "Sorry, you are unable to use this service - Stamp Taxes Online - GOV.UK"
+    "You are not authorised to use this service - Stamp Taxes Online - GOV.UK"
 }
