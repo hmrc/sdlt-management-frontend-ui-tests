@@ -22,12 +22,11 @@ object HowToPayPage extends BasePage {
 
   override def pageUrl: String = "/guidance/pay-stamp-duty-land-tax"
 
-  override def pageTitle: String =
-    "Pay Stamp Duty Land Tax - GOV.UK"
+  override def pageTitle: String = "Pay Stamp Duty Land Tax - GOV.UK"
 
   val howToPayLink: By = By.xpath("//a[starts-with(normalize-space(.), 'How to pay')]")
 
-  val expectedHref: String = "http://www.hmrc.gov.uk/payinghmrc/stamp-land.htm"
+  val expectedHref: String = "https://www.gov.uk/guidance/pay-stamp-duty-land-tax"
 
   def verifyLink(): Unit = {
     val linkValue = driver.findElement(howToPayLink).getAttribute("href")

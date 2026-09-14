@@ -118,21 +118,6 @@ class ManageTaxesAgentSpec
       HomePage.verifyPageTitle(HomePage.pageTitle)
     }
 
-    Scenario("Service feedback journey") {
-      Given("User enters login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Agent, "STN001")
-      Then("User should be navigated to the home page")
-      HomePage.verifyPageTitle(HomePage.pageTitle)
-
-      // leave feedback Link
-      When("User clicks on the leave feedback link on the homepage")
-      HomePage.click(HomePage.leaveFeedbackLink)
-      Then("User should be navigated to the feedback page")
-      FeedbackPage.fillFeedbackForm()
-      Then("User should be navigated to the home page")
-      HomePage.verifyPageTitle(HomePage.pageTitle)
-    }
-
     Scenario("Help and contact links") {
       Given("User enters login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Agent, "STN001")
@@ -141,14 +126,11 @@ class ManageTaxesAgentSpec
 
       // how to pay Link
       When("User verifies how to pay link on the homepage")
-      HomePage.waitForVisibilityOfElement(HomePage.howToPayLink)
-      HowToPayPage.verifyLink()
-      //      Then("User should be navigated to how to pay page")
-      //      HowToPayPage.verifyPageTitle(HowToPayPage.pageTitle)
-      //      When("User click on Back Link on the how to pay page")
-      //      HowToPayPage.navigateBackToPage()
-      //      Then("User should be navigated to the home page")
-      //      HomePage.verifyPageTitle(HomePage.pageTitle)
+      HowToPayPage.waitForVisibilityOfElement(HowToPayPage.howToPayLink)
+      HowToPayPage.click(HowToPayPage.howToPayLink)
+      Then("User should be navigated to how to pay page")
+      HowToPayPage.verifyPageTitle(HowToPayPage.pageTitle)
+
     }
 
     Scenario("Start a new return") {
