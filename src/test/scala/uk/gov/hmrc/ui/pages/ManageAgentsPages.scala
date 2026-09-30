@@ -31,3 +31,11 @@ object AddNewAgentPage extends BasePage {
   override def pageTitle: String =
     "What is the agent’s name? – Manage agents - Stamp Taxes Online - GOV.UK"
 }
+
+object AgentsBYSPage extends BasePage {
+
+  override def pageUrl: String = "/manage-agents/before-you-start"
+
+  override def pageTitle: String =
+    "Before you start - Manage agents - Stamp Taxes Online - GOV.UK"
+}
