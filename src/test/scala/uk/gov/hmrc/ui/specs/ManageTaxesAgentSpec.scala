@@ -110,12 +110,14 @@ class ManageTaxesAgentSpec
       // Add new agent Link
       When("User clicks on the add new agent link on the homepage")
       HomePage.click(HomePage.addANewAgentLink)
+      AgentsBYSPage.verifyPageTitle(AgentsBYSPage.pageTitle)
+      HomePage.clickSubmitButton()
       Then("User should be navigated what is agent's name page")
       AddNewAgentPage.verifyPageTitle(AddNewAgentPage.pageTitle)
       When("User click on Back Link on the What is agent's name page")
       AddNewAgentPage.navigateBackToPage()
-      Then("User should be navigated to the home page")
-      HomePage.verifyPageTitle(HomePage.pageTitle)
+      Then("User should be navigated to the before start page")
+      AgentsBYSPage.verifyPageTitle(AgentsBYSPage.pageTitle)
     }
 
     Scenario("Help and contact links") {
